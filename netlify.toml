@@ -1,0 +1,22 @@
+# Netlify build configuration for TCalc AI.
+#
+# This file was missing before — meaning build/publish settings only
+# existed inside the Netlify dashboard UI (not version-controlled, and
+# invisible to anyone reading the repo). Having it here means a fresh
+# Netlify site pointed at this repo builds correctly without any manual
+# dashboard configuration, and the settings travel with the code.
+
+[build]
+  base = "src/frontend"
+  publish = "dist"
+  command = "pnpm build"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Single-page app: any direct/deep link falls back to index.html so
+# client-side routing doesn't 404 on refresh.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
