@@ -1,0 +1,373 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+
+    --radius: 0.75rem;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.72 0.17 70),
+      oklch(0.58 0.14 25)
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      oklch(0.18 0.018 50 / 0.6),
+      oklch(0.14 0.015 50 / 0.3)
+    );
+
+    /* ── Light Mode ── */
+    --background: 0.96 0.005 260;
+    --foreground: 0.15 0.02 260;
+
+    --card: 1 0 0;
+    --card-foreground: 0.15 0.02 260;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.15 0.02 260;
+
+    --primary: 0.45 0.2 265;
+    --primary-foreground: 0.98 0.005 265;
+
+    --secondary: 0.92 0.01 260;
+    --secondary-foreground: 0.25 0.02 260;
+
+    --muted: 0.93 0.01 260;
+    --muted-foreground: 0.5 0.02 260;
+
+    --accent: 0.6 0.22 265;
+    --accent-foreground: 1 0 0;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 1 0 0;
+
+    --success: 0.55 0.18 150;
+    --warning: 0.7 0.15 85;
+
+    --border: 0.88 0.01 260;
+    --input: 0.88 0.01 260;
+    --ring: 0.55 0.22 265;
+
+    /* Calculator specific */
+    --calc-bg: oklch(0.12 0.02 265);
+    --display-bg: oklch(0.08 0.02 265);
+    --display-border: oklch(0.2 0.03 265);
+    --display-text: oklch(0.98 0.01 265);
+    --display-expr: oklch(0.65 0.05 265);
+  }
+
+  .dark {
+    /* ── Dark Mode — Black + Navy Blue + Soft Orange, premium/classic ── */
+    --background: 0.12 0.018 250;
+    --foreground: 0.92 0.008 240;
+
+    --card: 0.16 0.02 250;
+    --card-foreground: 0.92 0.008 240;
+
+    --popover: 0.16 0.02 250;
+    --popover-foreground: 0.92 0.008 240;
+
+    --primary: 0.68 0.13 55;
+    --primary-foreground: 0.14 0.01 55;
+
+    --secondary: 0.2 0.022 250;
+    --secondary-foreground: 0.82 0.008 240;
+
+    --muted: 0.2 0.022 250;
+    --muted-foreground: 0.55 0.015 245;
+
+    --accent: 0.55 0.11 45;
+    --accent-foreground: 0.95 0.004 45;
+
+    --destructive: 0.55 0.2 25;
+    --destructive-foreground: 0.92 0.01 25;
+
+    --success: 0.6 0.14 150;
+    --warning: 0.7 0.13 75;
+
+    --border: 0.25 0.022 250;
+    --input: 0.25 0.022 250;
+    --ring: 0.68 0.13 55;
+
+    /* Calculator specific */
+    --calc-bg: oklch(0.1 0.018 250);
+    --display-bg: oklch(0.07 0.016 250);
+    --display-border: oklch(0.2 0.022 250);
+    --display-text: oklch(0.95 0.01 60);
+    --display-expr: oklch(0.65 0.05 55);
+  }
+
+  .amoled {
+    /* ── AMOLED Black — true black for OLED battery savings ── */
+    --background: 0 0 0;
+    --card: 0.03 0.005 50;
+    --popover: 0.03 0.005 50;
+    --popover-foreground: 0.95 0.01 60;
+    --secondary: 0.06 0.008 50;
+    --muted: 0.06 0.008 50;
+    --border: 0.12 0.01 50;
+    --input: 0.12 0.01 50;
+    --calc-bg: oklch(0 0 0);
+    --display-bg: oklch(0.02 0.005 50);
+    --display-border: oklch(0.14 0.015 50);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  .gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+
+  .shadow-elevated {
+    box-shadow: 0 8px 32px oklch(0.14 0.015 50 / 0.25), 0 2px 8px
+      oklch(0.14 0.015 50 / 0.15);
+  }
+  .shadow-subtle {
+    box-shadow: 0 2px 8px oklch(0.14 0.015 50 / 0.1);
+  }
+  .shadow-ambient {
+    box-shadow: 0 0 40px oklch(0.72 0.17 70 / 0.08);
+  }
+}
+
+/* ── Touch Optimization ── */
+button,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+/* ── Calculator Display ── */
+.bg-calc-bg {
+  background-color: var(--calc-bg);
+}
+.bg-display-bg {
+  background-color: var(--display-bg);
+}
+.border-display-border {
+  border-color: var(--display-border);
+}
+.text-display-text {
+  color: var(--display-text);
+}
+.text-display-expr {
+  color: var(--display-expr);
+}
+
+/* ── Result Animation ── */
+@keyframes resultFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.result-animate {
+  animation: resultFadeIn 0.25s ease-out forwards;
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.35), 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+/* ── Button digit/symbol glow ── */
+.calc-btn {
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
+}
+
+/* ── Button Press Feedback ── */
+@keyframes buttonPress {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.press-feedback:active {
+  animation: buttonPress 0.1s ease-out;
+}
+
+/* ── Install Bar Pulse ── */
+@keyframes installPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.install-bar-pulse {
+  animation: installPulse 2s ease-in-out infinite;
+}
+
+/* ── Scrollbar Hide ── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Tool Form Layouts ── */
+.tool-form {
+  @apply flex flex-col gap-4 p-4;
+}
+
+.tool-result-panel {
+  @apply bg-card rounded-xl p-4 border border-border;
+}
+
+.tool-result-row {
+  @apply flex justify-between items-center py-1;
+}
+
+.tool-result-label {
+  @apply text-sm text-muted-foreground;
+}
+
+.tool-result-value {
+  @apply text-sm font-semibold text-foreground;
+}
+
+/* ── Landing Page Animations ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .result-animate,
+  .animate-fade-up,
+  .press-feedback:active,
+  .install-bar-pulse {
+    animation: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ── Button & Text Size setting (merged) — scales the whole app's base
+   font size too, not just calculator buttons ── */
+html[data-button-size="small"] {
+  font-size: 15px;
+}
+html[data-button-size="medium"] {
+  font-size: 16px;
+}
+html[data-button-size="large"] {
+  font-size: 17.5px;
+}
+html[data-button-size="xlarge"] {
+  font-size: 19px;
+}
+
+/* ── High Contrast setting ── */
+html[data-high-contrast="true"] {
+  filter: contrast(1.25) saturate(1.15);
+}
+html[data-high-contrast="true"] .border-border {
+  border-color: currentColor !important;
+  opacity: 1;
+}
+
+/* ── Animations toggle ── */
+html[data-animations="false"] * {
+  transition-duration: 0.01ms !important;
+  animation-duration: 0.01ms !important;
+}
+
+/* ── Hide on Background setting ── */
+html.app-backgrounded #root {
+  filter: blur(20px);
+  transition: filter 0.15s ease;
+}
+/* Button Size only scales font/roundness — button height always fills the
+   available space (see .keypad stretch layout), so "large" can never push
+   numbers off-screen and "small" can never shrink the whole screen. */
+html[data-button-size="small"] .calc-btn {
+  font-size: 0.95em;
+  border-radius: 12px;
+}
+html[data-button-size="medium"] .calc-btn {
+  font-size: 1em;
+  border-radius: 16px;
+}
+html[data-button-size="large"] .calc-btn {
+  font-size: 1.08em;
+  border-radius: 20px;
+}
+html[data-button-size="xlarge"] .calc-btn {
+  font-size: 1.18em;
+  border-radius: 22px;
+  font-weight: 700;
+}
+
+/* ── Battery Saver setting ── */
+html[data-battery-saver="true"] * {
+  transition-duration: 0.01ms !important;
+  animation-duration: 0.01ms !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
